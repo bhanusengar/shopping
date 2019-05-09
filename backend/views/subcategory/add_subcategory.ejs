@@ -1,0 +1,30 @@
+<%- include('../layout/header'); -%>
+<div class="container-fluid">
+   <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Add Sub-Category</h1>
+   <!-- DataTales Example -->
+   <div class="card shadow mb-4">
+      <div class="card-header py-3"></div>
+      <div class="card-body">
+        <form action="/doAddSubCategory" method="post">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Category</label>
+            <select class="form-control" id="exampleFormControlInput1" name="categories">
+              <option value="">Select Category</option>
+              <% if(categoryListingss.length>0){
+                categoryListingss.forEach(elem => { %>
+                <option value="<%- elem._id %>"><%- elem.category_name %></option>
+              <%  }); } %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="subcategorytitle" placeholder="Sub Category Title" required>
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <a class="btn btn-warning" href="/sub-categories">Cancel</a>
+        </form>
+      </div>
+   </div>
+</div>
+<%- include('../layout/footer'); -%>

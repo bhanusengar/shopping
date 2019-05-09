@@ -1,0 +1,25 @@
+<%- include('../layout/header'); -%>
+<div class="container-fluid">
+   <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Update Coupon</h1>
+   <!-- DataTales Example -->
+   <div class="card shadow mb-4">
+      <div class="card-header py-3"></div>
+      <div class="card-body">
+        <form action="/coupons/doEditCoupon/<%= couponData[0]._id %>" method="post">
+          
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Offer Code</label>
+            <input type="text" class="form-control" name="offer_code" value="<%= couponData[0].offer_code %>" placeholder="Offer Code" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Discount Percent</label>
+            <input type="number" min="0" class="form-control" name="discount" value="<%= couponData[0].discount%>" placeholder="Discount Percent" required>
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <a class="btn btn-warning" href="/coupons/">Cancel</a>
+        </form>
+      </div>
+   </div>
+</div>
+<%- include('../layout/footer'); -%>

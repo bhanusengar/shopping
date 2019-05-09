@@ -1,0 +1,39 @@
+<%- include('../layout/header'); -%>
+<div class="container-fluid">
+   <!-- Page Heading -->
+   <% if (validationError.length > 0){ 
+       validationError.forEach(function(validError){
+    %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= validError.msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+   <%  }); } %>
+   <h1 class="h3 mb-2 text-gray-800">Add Coupon Code</h1>
+   <!-- DataTales Example -->
+
+   <div class="card shadow mb-4">
+     
+      <div class="card-header py-3"></div>
+
+      
+      <div class="card-body">
+        <form action="/coupons/doAddCoupon" method="post">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Offer Code</label>
+            <input type="text" class="form-control" name="offer_code" placeholder="Offer Code" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Discount Percent</label>
+            <input type="number" min="0" class="form-control"  name="discount"
+              placeholder="Discount Percent" required>
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <a class="btn btn-warning" href="/coupons/">Cancel</a>
+        </form>
+      </div>
+   </div>
+</div>
+<%- include('../layout/footer'); -%>

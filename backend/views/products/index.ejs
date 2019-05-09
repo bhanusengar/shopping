@@ -1,0 +1,64 @@
+<%- include('../layout/header'); -%>
+<div class="container-fluid">
+   <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Products List</h1>
+   <!-- DataTales Example -->
+   <div class="card shadow mb-4">
+      <div class="card-header py-3">
+         <h6 class="m-0 font-weight-bold text-primary float-right"> <a href="/products/add-product"><i class="fas fa-plus fa-sm"></i> Add Product</a></h6>
+      </div>
+      <div class="card-body">
+         <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+               <div class="row">
+                  <div class="col-sm-12">
+                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                           <tr role="row">
+                              <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 265px;">Sl No.</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 419px;">Product Name</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 196px;">Gender</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 419px;">Price</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 196px;">Discount</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                                 aria-label="Office: activate to sort column ascending" style="width: 196px;">Image</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 99px;">Action</th>
+                           </tr>
+                        </thead>
+                        <tfoot>
+                           <tr>
+                              <th rowspan="1" colspan="1">Sl No.</th>
+                              <th rowspan="1" colspan="1">Product Name</th>
+                              <th rowspan="1" colspan="1">gender</th>
+                              <th rowspan="1" colspan="1">Price</th>
+                              <th rowspan="1" colspan="1">Discount</th>
+                              <th rowspan="1" colspan="1">Image</th>
+                              <th rowspan="1" colspan="1">Action</th>
+                           </tr>
+                        </tfoot>
+                        <tbody>
+                          <% if(docs){
+                            var i = 1;
+                              docs.forEach(elem => { %>
+                                <tr role="row" class="odd">
+                                   <td class="sorting_1"><%- i %></td>
+                                    <td><%- elem.productName %></td>
+                                    <td><%- elem.gender %></td>
+                                    <td><%- elem.productPrice %></td>
+                                    <td><%- elem.productDiscount %></td>
+                                    <td><image style="widows: 100px;height:100px" src="/uploads/<%- elem.productImage.file %>" /></td>
+                                   <td><a class="btn btn-xs btn-primary" href="/products/edit-product/<%- elem._id %>">Edit</a> || <a class="btn btn-xs btn-danger" onClick="return confirm('Are you sure?You want to delete!')" href="/products/delete-product/<%- elem._id %>">Delete</a> </td>
+                                </tr>
+                          <% i++; });  } %>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<%- include('../layout/footer'); -%>

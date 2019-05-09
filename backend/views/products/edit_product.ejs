@@ -1,0 +1,39 @@
+<%- include('../layout/header'); -%>
+<div class="container-fluid">
+   <!-- Page Heading -->
+   <h1 class="h3 mb-2 text-gray-800">Update Category</h1>
+   <!-- DataTales Example -->
+   <div class="card shadow mb-4">
+      <div class="card-header py-3"></div>
+      <div class="card-body">
+        <form action="/products/doEditProduct/<%= productData[0]._id %>" method="post">
+		  <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="form-control" name="productName"
+              placeholder="Product Name" value="<%= productData[0].productName%>" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Gender</label>
+            <select class="form-control" name="gender">
+              <option value="Male" <%= selected = ( productData[0].gender == "Male" ) ? "selected" : ""; %> >Male</option>
+              <option value="Female" <%= selected = ( productData[0].gender == "Female" ) ? "selected" : ""; %> >Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >Product Price</label>
+            <input type="number" class="form-control" name="productPrice"
+              placeholder="Product Price" min="1" value="<%= productData[0].productPrice%>" required>
+          </div>
+          <div class="form-group">
+            <label >Discount Percent</label>
+            <input type="number" class="form-control" name="productDiscount"
+              placeholder="Discount Percent" min="1" value="<%= productData[0].productDiscount%>" required>
+          </div>
+		  	  		  
+          <button type="submit" class="btn btn-success">Submit</button>
+          <a class="btn btn-warning" href="/products">Cancel</a>
+        </form>
+      </div>
+   </div>
+</div>
+<%- include('../layout/footer'); -%>
